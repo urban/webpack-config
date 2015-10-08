@@ -1,0 +1,7 @@
+/src
+/examples
+/coverage
+/.flowconfig
+/.gitignore
+/.istanbul.json
+/.npmignore

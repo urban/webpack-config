@@ -1,0 +1,47 @@
+:root {
+    --mainColor: red;
+    --altColor: blue;
+}
+@custom-media    --mobile (width <= 640px);
+@custom-selector :--heading h1, h2, h3, h4, h5, h6;
+
+:global(html) {
+  box-sizing: border-box;
+}
+:global(*),
+:global(*:before),
+:global(*:after) {
+  box-sizing: inherit;
+}
+
+:global code {
+  background: gray(95%);
+  border: 1px solid gray(80%);
+  border-radius: 2px;
+  padding: 0 0.25em;
+}
+
+.component {
+  border: 1px solid #333;
+  border-radius: 3px;
+  display: flex;
+  flex-direction: column;
+  padding: 1.5rem;
+}
+
+.component :--heading {
+    color: color( var(--mainColor) blackness(+20%) );
+    margin-top: 0;
+}
+
+@media (--mobile) {
+    .component :--heading {
+        color: color( var(--altColor) blackness(+20%) );
+    }
+}
+
+.counter {
+  background: gray(95%);
+  border: 1px solid #333;
+  padding: 20px;
+}

@@ -1,0 +1,89 @@
+{
+  "name": "@urban/webpack-config",
+  "version": "1.0.0",
+  "description": "An opinionated webpack config.",
+  "author": "Urban Faubion",
+  "license": "MIT",
+  "homepage": "https://github.com/urban/webpack-config#readme",
+  "keywords": [
+    "config",
+    "webpack",
+    "ES6",
+    "ES2015"
+  ],
+  "bugs": {
+    "url": "https://github.com/urban/webpack-config/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/urban/webpack-config.git"
+  },
+  "main": "lib/index.js",
+  "jsnext:main": "src/index.js",
+  "scripts": {
+    "build:lib": "NODE_ENV=production babel src --out-dir lib",
+    "build:watch": "babel src --out-dir lib --watch",
+    "build": "rimraf lib && npm run build:lib",
+    "check": "npm run test:lint && npm test && npm run test:audit && npm outdated --depth 0",
+    "prepublish": "npm run build",
+    "test:audit": "nsp audit-package",
+    "test:cov": "rimraf coverage && babel-node $(npm bin)/isparta cover ./src/__tests__",
+    "test:lint": "standard",
+    "test:typecheck": "flow check ./src",
+    "test:watch": "chokidar src/*.js -c 'npm test'",
+    "test": "babel-node ./src/__tests__/*.js | tap-spec",
+    "preversion": "npm run check",
+    "version": "npm run build",
+    "postversion": "git push && git push --tags"
+  },
+  "dependencies": {
+    "invariant": "^2.1.1",
+    "lodash.merge": "^3.3.2"
+  },
+  "devDependencies": {
+    "@urban/promisify": "^1.0.3",
+    "babel": "^5.8.21",
+    "babel-eslint": "^4.1.0",
+    "babel-loader": "^5.3.2",
+    "babel-plugin-flow-comments": "^1.0.9",
+    "babel-plugin-react-transform": "^1.1.1",
+    "chokidar-cli": "^1.1.0",
+    "css-loader": "^0.19.0",
+    "cssnext": "^1.8.4",
+    "extract-text-webpack-plugin": "^0.8.2",
+    "file-loader": "^0.8.4",
+    "isparta": "^3.1.0",
+    "json-loader": "^0.5.2",
+    "nsp": "^1.1.0",
+    "postcss-loader": "^0.6.0",
+    "react": "^0.14.0",
+    "react-dom": "^0.14.0",
+    "react-transform-catch-errors": "^1.0.0",
+    "react-transform-hmr": "^1.0.1",
+    "redbox-react": "^1.1.1",
+    "rimraf": "^2.4.2",
+    "standard": "^5.3.1",
+    "style-loader": "^0.12.3",
+    "tap-spec": "^4.1.0",
+    "tape": "^4.2.0",
+    "url-loader": "^0.5.6",
+    "webpack": "^1.12.2"
+  },
+  "peerDependencies": {
+    "babel-loader": "*",
+    "css-loader": "*",
+    "cssnext": "*",
+    "extract-text-webpack-plugin": "*",
+    "file-loader": "*",
+    "json-loader": "*",
+    "postcss-loader": "*",
+    "url-loader": "*",
+    "webpack": "*"
+  },
+  "standard": {
+    "parser": "babel-eslint",
+    "ignore": [
+      "examples/*/public/"
+    ]
+  }
+}

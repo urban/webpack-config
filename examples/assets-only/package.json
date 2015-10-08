@@ -1,0 +1,31 @@
+{
+  "name": "assets-only",
+  "version": "1.0.0",
+  "main": "./src/index.jsx",
+  "scripts": {
+    "clean": "rm -f ./public/*.css & rm -f ./public/*.js",
+    "prebuild": "npm run clean",
+    "build": "NODE_ENV=production webpack -p",
+    "prestart": "npm run clean",
+    "start": "webpack-dev-server -d --content-base=./public"
+  },
+  "author": "Urban Faubion",
+  "license": "MIT",
+  "dependencies": {
+    "@urban/webpack-config": "*",
+    "babel-loader": "^5.3.2",
+    "css-loader": "^0.15.6",
+    "cssnext": "^1.8.4",
+    "extract-text-webpack-plugin": "^0.8.2",
+    "file-loader": "^0.8.4",
+    "json-loader": "^0.5.3",
+    "postcss-loader": "^0.6.0",
+    "style-loader": "^0.12.4",
+    "url-loader": "^0.5.6",
+    "webpack": "^1.12.2"
+  },
+  "devDependencies": {
+    "rimraf": "^2.4.3",
+    "webpack-dev-server": "^1.12.0"
+  }
+}

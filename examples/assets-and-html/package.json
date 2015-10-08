@@ -1,0 +1,29 @@
+{
+  "name": "assets-and-html",
+  "version": "1.0.0",
+  "main": "./src/index.js",
+  "scripts": {
+    "prebuild": "rimraf ./public",
+    "build": "NODE_ENV=production webpack -p",
+    "start": "webpack-dev-server -d"
+  },
+  "author": "Urban Faubion",
+  "license": "MIT",
+  "dependencies": {
+    "@urban/webpack-config": "*",
+    "@urban/webpack-html-plugin": "^1.0.0",
+    "babel-loader": "*",
+    "css-loader": "*",
+    "cssnext": "*",
+    "extract-text-webpack-plugin": "*",
+    "file-loader": "*",
+    "json-loader": "*",
+    "postcss-loader": "*",
+    "url-loader": "*",
+    "webpack": "*"
+  },
+  "devDependencies": {
+    "rimraf": "^2.4.3",
+    "webpack-dev-server": "^1.12.0"
+  }
+}

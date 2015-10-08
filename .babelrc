@@ -1,0 +1,11 @@
+{
+  "stage": 0,
+  "loose": "all",
+  "plugins": ["flow-comments"],
+  "blacklist": ["flow"],
+  "env": {
+    "production": {
+      "ignore": ["./src/__tests__/*"]
+    }
+  }
+}
