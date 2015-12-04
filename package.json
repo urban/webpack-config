@@ -27,11 +27,11 @@
     "check": "npm run test:lint && npm test && npm run test:audit && npm outdated --depth 0",
     "prepublish": "npm run build",
     "test:audit": "nsp audit-package",
-    "test:cov": "rimraf coverage && babel-node $(npm bin)/isparta cover ./src/__tests__",
+    "test:cov": "rimraf coverage && babel-node $(npm bin)/isparta cover ./test",
     "test:lint": "standard",
     "test:typecheck": "flow check ./src",
     "test:watch": "chokidar src/*.js -c 'npm test'",
-    "test": "babel-node ./src/__tests__/*.js | tap-spec",
+    "test": "babel-node ./test/*.js | tap-spec",
     "preversion": "npm run check",
     "version": "npm run build",
     "postversion": "git push && git push --tags"
