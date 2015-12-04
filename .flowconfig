@@ -1,11 +1,11 @@
 [ignore]
 .*/lib/.*
 .*/examples/.*
-.*/nsp/node_modules/.*
+.*/node_modules/flow-bin/.*
+.*/node_modules/fbjs/flow/.*
+.*/node_modules/nsp/node_modules/.*
 
 [include]
-./src/
 
 [libs]
-
-[options]
+./interfaces/

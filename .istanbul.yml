@@ -1,5 +1,5 @@
 instrumentation:
-  excludes: ['**/__tests__/**']
+  excludes: ['./test/*']
 
 reporting:
   reports: ['text', 'html']

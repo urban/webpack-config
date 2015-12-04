@@ -1,5 +1,5 @@
 /* @flow */
-import webpack, {NoErrorsPlugin} from 'webpack'
+import webpack, { NoErrorsPlugin } from 'webpack'
 import cssnext from 'cssnext'
 
 const config: Object = {

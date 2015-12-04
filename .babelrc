@@ -1,11 +1,8 @@
 {
-  "stage": 0,
-  "loose": "all",
-  "plugins": ["flow-comments"],
-  "blacklist": ["flow"],
+  "presets": ["es2015", "stage-0", "react"],
   "env": {
-    "production": {
-      "ignore": ["./src/__tests__/*"]
+    "test": {
+      "presets": ["es2015", "stage-0", "react"]
     }
   }
 }

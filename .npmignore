@@ -1,6 +1,7 @@
-/src
-/examples
 /coverage
+/examples
+/interfaces
+/src
 /.flowconfig
 /.gitignore
 /.istanbul.json

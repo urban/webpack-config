@@ -1,8 +1,8 @@
 /* @flow */
 import invariant from 'invariant'
 import baseConfig from './base-config'
-import {DefinePlugin, HotModuleReplacementPlugin} from 'webpack'
-import ExtractTextPlugin, {extract} from 'extract-text-webpack-plugin'
+import { DefinePlugin, HotModuleReplacementPlugin } from 'webpack'
+import ExtractTextPlugin, { extract } from 'extract-text-webpack-plugin'
 import merge from 'lodash.merge'
 
 const ENV = process.env.NODE_ENV || 'develope'
@@ -14,7 +14,7 @@ const BUILD_PRERELEASE = process.env.BUILD_PRERELEASE || false
 function getConfig (config: Object, isHot: boolean = DEV): Object {
   invariant(
     config && config.context && config.entry && config.output && config.output.path,
-    'Must pass in config options object with `context`,  `entry` and `output.path` properties'
+    'Must pass in config options object with `context`,  `entry` and `output.path` properties.'
   )
 
   const cssLocalIdentityName = '[name]---[local]---[hash:base64:5]'
