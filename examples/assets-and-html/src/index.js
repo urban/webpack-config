@@ -7,7 +7,7 @@ function renderUI (props) {
   return `
     <div class='${styles.component}'>
       <header role='banner'>
-        <h1>Assets Only Example</h1>
+        <h1>Assets and HTML</h1>
       </header>
       <p>This is a <em>simple</em> example that uses <a href='https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/template_strings'>Template Strings</a>.</p>
       <div className='${styles.counter}'>

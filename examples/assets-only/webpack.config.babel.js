@@ -1,4 +1,4 @@
-import getConfig from '@urban/webpack-config'
+import getConfig from '../../src'
 
 export default getConfig({
   context: __dirname,

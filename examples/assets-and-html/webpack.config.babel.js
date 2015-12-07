@@ -1,4 +1,5 @@
-import getConfig from '@urban/webpack-config'
+
+import getConfig from '../../src'
 import HtmlPlugin from '@urban/webpack-html-plugin'
 
 export default getConfig({
