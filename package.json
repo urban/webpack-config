@@ -1,6 +1,6 @@
 {
   "name": "@urban/webpack-config",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "An opinionated webpack config.",
   "author": "Urban Faubion",
   "license": "MIT",
