@@ -1,6 +1,7 @@
 /* @flow */
 import invariant from 'invariant'
 import baseConfig from './base-config'
+import getEntry from './get-entry'
 import { DefinePlugin, HotModuleReplacementPlugin } from 'webpack'
 import ExtractTextPlugin, { extract } from 'extract-text-webpack-plugin'
 import merge from 'lodash.merge'
@@ -23,12 +24,12 @@ function getConfig (config: Object, isHot: boolean = DEV): Object {
 
   const appConfig = merge({}, baseConfig, config)
 
-  // TODO: Need to support hot module swapping and entry of type String,
-  // Object or Array.
+  const entry = getEntry(appConfig.entry, isHot)
 
   return {
     cache: DEV,
     ...appConfig,
+    entry,
     stats: {
       reasons: DEV,
       ...appConfig.stats
