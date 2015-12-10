@@ -17,11 +17,14 @@ function getConfig (config: Object, isHot: boolean = DEV): Object {
     'Must pass in config options object with `context`,  `entry` and `output.path` properties.'
   )
 
-  const cssLocalIdentityName = '[name]---[local]---[hash:base64:5]'
+  const cssLocalIdentityName = '[name]__[local]___[hash:base64:5]'
   const cssModules = `css?modules&importLoaders=1&localIdentityName=${cssLocalIdentityName}`
   const stylesheetsLoaders = ['style', cssModules, 'postcss']
 
   const appConfig = merge({}, baseConfig, config)
+
+  // TODO: Need to support hot module swapping and entry of type String,
+  // Object or Array.
 
   return {
     cache: DEV,
@@ -31,6 +34,7 @@ function getConfig (config: Object, isHot: boolean = DEV): Object {
       ...appConfig.stats
     },
     module: {
+      ...appConfig.module,
       loaders: [
         ...appConfig.module.loaders,
         {
