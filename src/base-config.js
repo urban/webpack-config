@@ -11,7 +11,7 @@ const config: Object = {
   },
 
   resolve: {
-    extensions: ['', '.webpack.js', '.web.js', '.js', '.jsx'],
+    extensions: ['', '.js', '.jsx', '.json'],
     packageAlias: 'browser'
   },
 
@@ -28,7 +28,7 @@ const config: Object = {
   module: {
     loaders: [
       {
-        test: /\.js(x?)$/,
+        test: /\.jsx?$/,
         exclude: /node_modules/,
         loaders: ['babel']
       },
