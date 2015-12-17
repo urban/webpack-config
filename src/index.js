@@ -3,7 +3,7 @@ import invariant from 'invariant'
 import baseConfig from './base-config'
 import { DefinePlugin, HotModuleReplacementPlugin } from 'webpack'
 import ExtractTextPlugin, { extract } from 'extract-text-webpack-plugin'
-import merge from 'lodash.merge'
+import merge from 'webpack-merge'
 
 const ENV = process.env.NODE_ENV || 'development'
 const PROD = ENV === 'production'
@@ -20,20 +20,15 @@ function getConfig (config: Object, isHot: boolean = DEV): Object {
   const cssLocalIdentityName = '[name]__[local]___[hash:base64:5]'
   const cssModules = `css?modules&importLoaders=1&localIdentityName=${cssLocalIdentityName}`
   const stylesheetsLoaders = ['style', cssModules, 'postcss']
+  const cssFilename = config.output.cssFilename || baseConfig.output.cssFilename
 
-  const appConfig = merge({}, baseConfig, config)
-
-  return {
+  return merge(baseConfig, config, {
     cache: DEV,
-    ...appConfig,
     stats: {
       reasons: DEV,
-      ...appConfig.stats
     },
     module: {
-      ...appConfig.module,
       loaders: [
-        ...appConfig.module.loaders,
         {
           test: /\.css$/,
           loader: (isHot
@@ -44,17 +39,16 @@ function getConfig (config: Object, isHot: boolean = DEV): Object {
       ]
     },
     plugins: [
-      ...appConfig.plugins,
       new DefinePlugin({
         __DEV__: BUILD_DEV,
         __PRERELEASE__: BUILD_PRERELEASE
       }),
       ...(isHot
         ? [new HotModuleReplacementPlugin()]
-        : [new ExtractTextPlugin(baseConfig.output.cssFilename, { allChunks: true })]
+        : [new ExtractTextPlugin(cssFilename, { allChunks: true })]
       )
     ]
-  }
+  })
 }
 
 export default getConfig
