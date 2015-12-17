@@ -5,7 +5,7 @@ import { DefinePlugin, HotModuleReplacementPlugin } from 'webpack'
 import ExtractTextPlugin, { extract } from 'extract-text-webpack-plugin'
 import merge from 'lodash.merge'
 
-const ENV = process.env.NODE_ENV || 'develope'
+const ENV = process.env.NODE_ENV || 'development'
 const PROD = ENV === 'production'
 const DEV = !PROD
 const BUILD_DEV = process.env.BUILD_DEV || DEV
