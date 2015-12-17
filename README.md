@@ -32,7 +32,7 @@ npm i --save @urban/webpack-config
 In npm version `3.x.x`, `peerDependencies` are no longer installed by default. In order to install the latest versions of this packages `peerDependencies`, please run the following command.
 
 ```sh
-npm i --save babel-loader css-loader cssnext extract-text-webpack-plugin file-loader json-loader postcss-loader style-loader url-loader webpack
+npm i --save autoprefixer babel-loader css-loader extract-text-webpack-plugin file-loader json-loader postcss-loader style-loader url-loader webpack
 ```
 
 
@@ -44,7 +44,7 @@ npm i --save babel-loader css-loader cssnext extract-text-webpack-plugin file-lo
     + [babel](https://github.com/babel/babel-loader) - Transpiles ES2015 and ES2016 code into vanilla ES5 using [Babel](https://babeljs.io).
     + [css](https://github.com/webpack/css-loader) - Loads css file with resolved imports and returns css code _(enables CSS Moduels)_.
     + [postcss](https://github.com/postcss/postcss-loader) - A fast CSS parser written in JavaScript.
-      * [cssnext](http://cssnext.io/) - A CSS transpiler that allows you to use the latest CSS syntax today _(includes [Autoprefixer](https://github.com/postcss/autoprefixer))_.
+      * [autoprefixer](https://github.com/postcss/autoprefixer) - Plugin to parse CSS and add vendor prefixes to CSS rules using values form [Can I Use](http://caniuse.com/).
     + [file](https://github.com/webpack/file-loader) - Emits the file into the output folder and returns the (relative) url.
     + [json](https://github.com/webpack/json-loader) - Loads file as JSON.
     + [style](https://github.com/webpack/style-loader) - Add exports of a module as style to DOM _(enabled in development)_.
@@ -72,6 +72,8 @@ There are several different ways to invoke `webpack` from the command line.
 To use this module, create a `webpack.config.babel.js` file at the root of your project with the following content.
 
 ```js
+// webpack.config.babel.js
+
 import getConfig = '@urban/webpack-config'
 
 export default getConfig({
@@ -146,6 +148,10 @@ const config = {
     output: {
         path: './public/'
         // ...more output options (e.g. libraryTarget: 'umd')
+    },
+    // ...more output options (e.g. libraryTarget: 'umd')
+    resolve: {
+        modulesDirectories: ['src', 'node_modules']
     }
 }
 
@@ -191,8 +197,7 @@ See [babelrc](https://babeljs.io/docs/usage/babelrc/) for more information.
 
 ```json
 {
-    "stage": 0,
-    "loose": "all"
+  "presets": ["es2015", "stage-0"],
 }
 ```
 
@@ -258,12 +263,6 @@ To make debugging easier, local `classNames` use the `[path][name]__[local]___[h
 For more information on CSS Modules, please see [Local scope](https://github.com/webpack/css-loader#local-scope), [Composing CSS classes](https://github.com/webpack/css-loader#composing-css-classes) and [Importing local class names](https://github.com/webpack/css-loader#importing-local-class-names).
 
 _**Note:** CSS Module syntax is enabled by default for all files with the `.css` extension._
-
-#### cssnext
-
-[cssnext](http://cssnext.io/) is a post-process CSS transpiler that lets you write CSS according to the [new CSS specs](new CSS specs) by the CSS Working Group without waiting for browser support. This means you can use the latest CSS syntax features like variables, custom properties, custom selectors, custom media queries and more today.
-
-_**Note:** cssnext is enabled by default for all files with the `.css` extension._
 
 #### Autoprefixer
 
