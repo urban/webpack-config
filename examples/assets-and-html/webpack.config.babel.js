@@ -1,4 +1,3 @@
-
 import getConfig from '../../src'
 import HtmlPlugin from '@urban/webpack-html-plugin'
 

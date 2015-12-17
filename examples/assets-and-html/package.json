@@ -11,12 +11,12 @@
   "license": "MIT",
   "dependencies": {
     "@urban/webpack-html-plugin": "*",
+    "autoprefixer": "*",
     "babel-core": "*",
     "babel-loader": "*",
     "babel-preset-es2015": "*",
     "babel-preset-stage-0": "*",
     "css-loader": "*",
-    "cssnext": "*",
     "extract-text-webpack-plugin": "*",
     "file-loader": "*",
     "json-loader": "*",

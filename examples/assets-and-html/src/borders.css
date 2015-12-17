@@ -1,0 +1,10 @@
+.thin {
+  border-width: 1px;
+}
+
+.solid { 
+  border-style: solid;
+}
+.rounded { 
+  border-radius: 3px;
+}

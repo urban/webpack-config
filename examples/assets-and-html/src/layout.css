@@ -1,0 +1,12 @@
+.layout { 
+  display: flex;
+}
+
+.vertical {
+  composes: layout;
+  flex-direction: column;
+}
+
+.flexnone {
+  flex: 0;
+}

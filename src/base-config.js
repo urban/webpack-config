@@ -1,6 +1,6 @@
 /* @flow */
 import webpack, { NoErrorsPlugin } from 'webpack'
-import cssnext from 'cssnext'
+import autoprefixer from 'autoprefixer'
 
 const config: Object = {
 
@@ -73,7 +73,7 @@ const config: Object = {
   },
 
   postcss: () => {
-    return [ cssnext() ]
+    return [autoprefixer]
   }
 }
 
