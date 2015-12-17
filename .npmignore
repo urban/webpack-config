@@ -2,6 +2,7 @@
 /examples
 /interfaces
 /src
+/.babelrc
 /.flowconfig
 /.gitignore
 /.istanbul.json
