@@ -73,7 +73,6 @@
     "extract-text-webpack-plugin": "*",
     "file-loader": "*",
     "json-loader": "*",
-    "postcss-color-function": "*",
     "postcss-loader": "*",
     "style-loader": "*",
     "url-loader": "*",
