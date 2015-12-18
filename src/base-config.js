@@ -21,7 +21,6 @@ const config: Object = {
   },
 
   plugins: [
-    new webpack.optimize.DedupePlugin(),
     new NoErrorsPlugin()
   ],
 
