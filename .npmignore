@@ -2,6 +2,7 @@
 /examples
 /interfaces
 /src
+/test
 /.babelrc
 /.flowconfig
 /.gitignore
