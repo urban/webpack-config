@@ -23,7 +23,7 @@ const baseConfig = {
   output: { path: outputDir }
 }
 
-test('It works.', async t => {
+test('No errors', async t => {
   const config = getConfig(baseConfig)
   const stats = await build(config)
   t.pass('No fatal error.')
@@ -33,7 +33,7 @@ test('It works.', async t => {
   t.end()
 })
 
-test('It should allow custom configuration.', t => {
+test('Custom configuration', t => {
   const config = getConfig({
     ...baseConfig,
     output: {
@@ -65,7 +65,7 @@ test('It should allow custom configuration.', t => {
   t.end()
 })
 
-test('In production, it should output bundles to disk.', async t => {
+test('Output bundles', async t => {
   const isHot = false
   const config = getConfig(baseConfig, isHot)
   await build(config)
@@ -75,7 +75,7 @@ test('In production, it should output bundles to disk.', async t => {
   t.end()
 })
 
-test('In development, it should not output CSS to disk.', async t => {
+test('Omit output CSS', async t => {
   const isHot = true
   const config = getConfig(baseConfig, isHot)
   await build(config)

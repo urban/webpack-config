@@ -9,6 +9,11 @@ export default class App extends React.Component {
     this.state = { count: 0 }
   }
 
+  handleClick = (event) => {
+    event.preventDefault()
+    this.setState({ count: this.state.count + 1 })
+  };
+
   render () {
     return (
       <div className={styles.component}>
@@ -22,11 +27,6 @@ export default class App extends React.Component {
         </div>
       </div>
     )
-  }
-
-  handleClick = (event) => {
-    event.preventDefault()
-    this.setState({ count: this.state.count + 1 })
   }
 }
 

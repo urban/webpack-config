@@ -1,5 +1,5 @@
 /* @flow */
-import webpack, { NoErrorsPlugin } from 'webpack'
+import { NoErrorsPlugin } from 'webpack'
 import autoprefixer from 'autoprefixer'
 
 const config: Object = {

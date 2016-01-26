@@ -1,7 +1,7 @@
 /* @flow */
 import reduce from 'lodash.reduce'
 
-export default function getEntry (entry: string | Array<string> | Object, entries: Array<string> = []) {
+export default function getEntry (entry: string | Array<string> | Object, entries: Array<string> = []): Object {
   if (typeof entry === 'string') {
     return getEntry([entry], entries)
   }
