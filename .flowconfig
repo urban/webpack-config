@@ -1,11 +1,12 @@
 [ignore]
 .*/lib/.*
 .*/examples/.*
-.*/node_modules/flow-bin/.*
-.*/node_modules/fbjs/flow/.*
-.*/node_modules/nsp/node_modules/.*
 
 [include]
+./src/
 
 [libs]
 ./interfaces/
+
+[options]
+suppress_comment= \\(.\\|\n\\)*\\$FlowFixMe

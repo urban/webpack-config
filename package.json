@@ -54,7 +54,6 @@
     "glob": "6.0.4",
     "isparta": "4.0.0",
     "json-loader": "0.5.4",
-    "lodash.reduce": "4.0.0",
     "nsp": "2.2.0",
     "postcss-loader": "0.8.0",
     "react": "0.14.7",
