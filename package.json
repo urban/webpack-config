@@ -36,7 +36,6 @@
   },
   "dependencies": {
     "invariant": "2.2.0",
-    "lodash.reduce": "4.0.1",
     "webpack-merge": "0.7.3"
   },
   "devDependencies": {

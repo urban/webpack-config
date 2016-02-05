@@ -1,18 +1,21 @@
 /* @flow */
-import reduce from 'lodash.reduce'
 
-export default function getEntry (entry: string | Array<string> | Object, entries: Array<string> = []): Object {
+export default function getEntry (entry: any, entries: Array<string> = []): Object {
   if (typeof entry === 'string') {
-    return getEntry([entry], entries)
+    entry = [entry]
   }
   if (Array.isArray(entry)) {
-    return getEntry({ main: entry }, entries)
+    entry = { main: entry }
   }
-  return reduce(entry, (result, value, key) => {
-    result[key] = [
-      ...entries,
-      ...(Array.isArray(value) ? value : [value])
-    ]
-    return result
-  }, {})
+  return Object.keys(entry)
+    .reduce((acc, x) => {
+      const v = entry[x]
+      return {
+        ...acc,
+        [x]: [
+          ...entries,
+          ...(Array.isArray(v) ? v : [v])
+        ]
+      }
+    }, {})
 }
