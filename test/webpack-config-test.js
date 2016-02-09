@@ -6,6 +6,7 @@ import webpack from 'webpack'
 import getConfig from '../src'
 import rimraf from 'rimraf'
 import promisify from '@urban/promisify'
+import { smart as merge } from 'webpack-merge'
 
 const outputDir = join(__dirname, './tmp/')
 const pathTo = join.bind(null, outputDir)
@@ -19,12 +20,12 @@ const exists = promisify(fs.stat, function (err, result) {
 
 const baseConfig = {
   context: __dirname,
-  entry: join(__dirname, './fixtures/index.jsx'),
+  entry: join(__dirname, './fixtures/index.js'),
   output: { path: outputDir }
 }
 
 test('No errors', async t => {
-  const config = getConfig(baseConfig)
+  const config = merge(getConfig({ debug: true }), baseConfig)
   const stats = await build(config)
   t.pass('No fatal error.')
   t.equal(stats.hasErrors(), false, 'No webpack errors.')
@@ -34,10 +35,8 @@ test('No errors', async t => {
 })
 
 test('Custom configuration', t => {
-  const config = getConfig({
-    ...baseConfig,
+  const config = merge(getConfig({ debug: true }), baseConfig, {
     output: {
-      ...baseConfig.output,
       filename: 'test.js',
       cssFilename: 'test.css',
       path: './path/to/build/'
@@ -66,8 +65,7 @@ test('Custom configuration', t => {
 })
 
 test('Output bundles', async t => {
-  const isHot = false
-  const config = getConfig(baseConfig, isHot)
+  const config = merge(getConfig({ env: 'production' }), baseConfig)
   await build(config)
   t.equal(await exists(pathTo('main.js')), true, 'JS bundle exists.')
   t.equal(await exists(pathTo('main.css')), true, 'CSS bundle exists.')
@@ -76,11 +74,9 @@ test('Output bundles', async t => {
 })
 
 test('Omit output CSS', async t => {
-  const isHot = true
-  const config = getConfig(baseConfig, isHot)
+  const config = merge(getConfig({ debug: true }), baseConfig)
   await build(config)
   t.equal(await exists(pathTo('main.js')), true, 'JS bundle exists')
-
   try {
     await fileStat(pathTo('main.css'))
   } catch (err) {

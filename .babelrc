@@ -2,6 +2,12 @@
   "presets": ["es2015", "stage-0"],
   "plugins": ["transform-flow-strip-types"],
   "env": {
+    "commonjs": {
+      "presets": ["es2015", "stage-0"],
+    },
+    "es" : {
+      "presets": ["es2015-webpack", "stage-0"],
+    },
     "test": {
       "presets": ["es2015", "stage-0", "react"]
     }

@@ -1,6 +1,6 @@
 /* @flow */
 
-export default function getEntry (entry: any, entries: Array<string> = []): Object {
+function makeEntry (entry: any, entries: Array<string> = []): Object {
   if (typeof entry === 'string') {
     entry = [entry]
   }
@@ -19,3 +19,5 @@ export default function getEntry (entry: any, entries: Array<string> = []): Obje
       }
     }, {})
 }
+
+export default makeEntry

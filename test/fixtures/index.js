@@ -1,6 +1,6 @@
-import styles from './styles.css'
 import React from 'react'
 import ReactDOM from 'react-dom'
+import styles from './styles.css'
 
 export default class App extends React.Component {
 
@@ -15,15 +15,16 @@ export default class App extends React.Component {
   };
 
   render () {
+    const { count } = this.state
     return (
       <div className={styles.component}>
         <header role='banner'>
-          <h1>Assets Only Example</h1>
+          <h1 className={styles.title}>Assets Only Example</h1>
         </header>
         <p>This is a <em>simple</em> example that uses <a href='http://facebook.github.io/react/'>React.js</a> and only generates <code>CSS</code> and <code>JavaScript</code>.</p>
         <div className={styles.counter}>
-          <h2>Clicked {this.state.count} times.</h2>
-          <button onClick={this.handleClick}>Click me!</button>
+          <h2>Clicked {count} times.</h2>
+          <button className={styles.button} onClick={this.handleClick}>Click me!</button>
         </div>
       </div>
     )
