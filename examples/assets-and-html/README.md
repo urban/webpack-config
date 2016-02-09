@@ -18,13 +18,10 @@ npm run build
 
 import getConfig from '@urban/webpack-config'
 import HtmlPlugin from '@urban/webpack-html-plugin'
+import { smart as merge } from 'webpack-merge'
 
-export default getConfig({
-  context: __dirname,
-  entry: './src/index.js',
-  output: {
-    path: './public/'
-  },
+const config = {
+  output: { path: 'public' },
   plugins: [
     new HtmlPlugin((assets, defaultTemplate, compiler) => {
       const templateData = {
@@ -35,7 +32,9 @@ export default getConfig({
       return {'index.html': defaultTemplate(templateData)}
     })
   ]
-})
+}
+
+export default merge(getConfig(), config)
 ```
 
 ```json
@@ -43,8 +42,8 @@ export default getConfig({
 
 "scripts": {
     "prebuild": "rimraf ./public",
-    "build": "NODE_ENV=production webpack -p",
-    "start": "webpack-dev-server -d"
+    "build": "cross-env NODE_ENV=development webpack -d ../_shared/src/index.js",
+    "start": "cross-env NODE_ENV=development webpack-dev-server -d --inline --content-base ./public/ ../_shared/src/index.js"
 }
 ```
 

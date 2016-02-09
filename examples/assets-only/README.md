@@ -19,27 +19,22 @@ npm run build
 // webpack.config.babel.js
 
 import getConfig from '@urban/webpack-config'
+import { smart as merge } from 'webpack-merge'
 
-const isDev = process.env.NODE_ENV !== 'production'
+const config = {
+  output: { path: 'public'}
+}
 
-export default getConfig({
-  context: __dirname,
-  entry: './src/index.js',
-  output: {
-    path: './public'
-  }
-}, isDev)
+export default merge(getConfig(), config)
 ```
 
 ```json
 // package.json
 
 "scripts": {
-    "clean": "rm -f ./public/*.css & rm -f ./public/*.js",
-    "prebuild": "npm run clean",
-    "build": "NODE_ENV=production webpack -p",
-    "prestart": "npm run clean",
-    "start": "webpack-dev-server -d --content-base=./public"
+    "prebuild": "rm -f ./public/*.css & rm -f ./public/*.js ./public/*.map",
+    "build": "cross-env NODE_ENV=production webpack -p ../_shared/src/index.js",
+    "start": "cross-env NODE_ENV=development webpack-dev-server -d --inline --hot --content-base ./public/ ../_shared/src/index.js"
 }
 ```
 

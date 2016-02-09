@@ -1,12 +1,9 @@
 import getConfig from '../../src'
 import HtmlPlugin from '@urban/webpack-html-plugin'
+import { smart as merge } from 'webpack-merge'
 
-export default getConfig({
-  context: __dirname,
-  entry: './src/index.js',
-  output: {
-    path: './public/'
-  },
+const config = {
+  output: { path: 'public' },
   plugins: [
     new HtmlPlugin((assets, defaultTemplate, compiler) => {
       const templateData = {
@@ -17,4 +14,6 @@ export default getConfig({
       return {'index.html': defaultTemplate(templateData)}
     })
   ]
-})
+}
+
+export default merge(getConfig(), config)

@@ -1,0 +1,34 @@
+{
+  "name": "webpack-2",
+  "version": "0.1.0",
+  "main": "lib/index.js",
+  "jsnext:main": "src/index.js",
+  "scripts": {
+    "build:umd": "cross-env NODE_ENV=development webpack -d ../_shared/src/index.js",
+    "build:umd:min": "cross-env NODE_ENV=production webpack -p ../_shared/src/index.js",
+    "prebuild": "rm -f ./public",
+    "build": "npm run build:umd && npm run build:umd:min",
+    "start": "cross-env NODE_ENV=development webpack-dev-server -d --content-base ./public/ ../_shared/src/index.js"
+  },
+  "author": "Urban Faubion",
+  "license": "MIT",
+  "devDependencies": {
+    "@urban/webpack-html-plugin": "*",
+    "autoprefixer": "*",
+    "babel-core": "*",
+    "babel-loader": "*",
+    "babel-preset-es2015-webpack": "*",
+    "babel-preset-stage-0": "*",
+    "cross-env": "*",
+    "css-loader": "*",
+    "extract-text-webpack-plugin": "*",
+    "file-loader": "*",
+    "json-loader": "*",
+    "postcss-loader": "*",
+    "style-loader": "*",
+    "url-loader": "*",
+    "webpack": "2.0.7-beta",
+    "webpack-dev-server": "2.0.0-beta",
+    "webpack-merge": "*"
+  }
+}

@@ -4,8 +4,8 @@
   "main": "./src/index.js",
   "scripts": {
     "prebuild": "rimraf ./public",
-    "build": "NODE_ENV=production webpack -p",
-    "start": "webpack-dev-server -d"
+    "build": "cross-env NODE_ENV=development webpack -d ../_shared/src/index.js",
+    "start": "cross-env NODE_ENV=development webpack-dev-server -d --inline --content-base ./public/ ../_shared/src/index.js"
   },
   "author": "Urban Faubion",
   "license": "MIT",
@@ -25,7 +25,9 @@
     "webpack": "*"
   },
   "devDependencies": {
+    "cross-env": "1.0.7",
     "rimraf": "*",
-    "webpack-dev-server": "*"
+    "webpack-dev-server": "*",
+    "webpack-merge": "0.7.3"
   }
 }

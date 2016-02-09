@@ -1,9 +1,8 @@
 import getConfig from '../../src'
+import { smart as merge } from 'webpack-merge'
 
-export default getConfig({
-  context: __dirname,
-  entry: './src/index.js',
-  output: {
-    path: './public/'
-  }
-})
+const config = {
+  output: { path: 'public'}
+}
+
+export default merge(getConfig(), config)
