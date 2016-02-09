@@ -24,7 +24,7 @@ const baseConfig = {
   output: { path: outputDir }
 }
 
-test('No errors', async t => {
+test('No errors', async function (t) {
   const config = merge(getConfig({ debug: true }), baseConfig)
   const stats = await build(config)
   t.pass('No fatal error.')
@@ -34,7 +34,7 @@ test('No errors', async t => {
   t.end()
 })
 
-test('Custom configuration', t => {
+test('Custom configuration', function (t) {
   const config = merge(getConfig({ debug: true }), baseConfig, {
     output: {
       filename: 'test.js',
@@ -64,7 +64,7 @@ test('Custom configuration', t => {
   t.end()
 })
 
-test('Output bundles', async t => {
+test('Output bundles', async function (t) {
   const config = merge(getConfig({ env: 'production' }), baseConfig)
   await build(config)
   t.equal(await exists(pathTo('main.js')), true, 'JS bundle exists.')
@@ -73,7 +73,7 @@ test('Output bundles', async t => {
   t.end()
 })
 
-test('Omit output CSS', async t => {
+test('Omit output CSS', async function (t) {
   const config = merge(getConfig({ debug: true }), baseConfig)
   await build(config)
   t.equal(await exists(pathTo('main.js')), true, 'JS bundle exists')

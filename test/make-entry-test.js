@@ -23,40 +23,40 @@ function checkHot (entry: Object, path: string, t: Function): void {
   t.equal(entry.main[1], path, 'It has the correct entry path.')
 }
 
-test('Entry from a string.', t => {
+test('Entry from a string.', (t) => {
   const path = 'src/index.js'
   check(makeEntry(path), path, t)
   t.end()
 })
 
-test('Hot entry from string.', t => {
+test('Hot entry from string.', (t) => {
   const path = 'src/index.js'
   const entries = ['webpack/hot/dev-server']
   checkHot(makeEntry(path, entries), path, t)
   t.end()
 })
 
-test('Entry from an Array', t => {
+test('Entry from an Array', (t) => {
   const path = 'src/index.js'
   check(makeEntry([path]), path, t)
   t.end()
 })
 
-test('Hot entry from an Array', t => {
+test('Hot entry from an Array', (t) => {
   const path = 'src/index.js'
   const entries = ['webpack/hot/dev-server']
   checkHot(makeEntry([path], entries), path, t)
   t.end()
 })
 
-test('Entry from an Object', t => {
+test('Entry from an Object', (t) => {
   const path = 'src/index.js'
   check(makeEntry({ main: path }), path, t)
   check(makeEntry({ main: [path] }), path, t)
   t.end()
 })
 
-test('Hot entry from an Object', t => {
+test('Hot entry from an Object', (t) => {
   const path = 'src/index.js'
   const entries = ['webpack/hot/dev-server']
   checkHot(makeEntry({ main: path }, entries), path, t)
@@ -64,7 +64,7 @@ test('Hot entry from an Object', t => {
   t.end()
 })
 
-test('Multiple hot entries', t => {
+test('Multiple hot entries', (t) => {
   const hotEntry = 'webpack/hot/dev-server'
   const main = 'src/index.js'
   const test = 'test/index-test.js'
