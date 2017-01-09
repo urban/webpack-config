@@ -2,7 +2,7 @@ import React from 'react'
 import ReactDOM from 'react-dom'
 import styles from './styles.css'
 
-export default class App extends React.Component {
+class App extends React.Component {
 
   constructor (props) {
     super(props)
@@ -32,7 +32,7 @@ export default class App extends React.Component {
 }
 
 if (typeof document !== 'undefined') {
-  ReactDOM.render(<App/>, document.querySelector('#content'))
+  ReactDOM.render(<App />, document.querySelector('#content'))
 }
 
 export default App

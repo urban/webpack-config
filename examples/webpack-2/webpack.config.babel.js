@@ -13,15 +13,16 @@ const config = {
       }
     ]
   },
-  plugins: [ new HtmlPlugin((assets, defaultTemplate, compiler) => {
-    const templateData = {
-      ...assets,
-      title: 'Webpack 2',
-      html: '<div id="content"></div>'
-    }
-    return {'index.html': defaultTemplate(templateData)}
-  })
- ]
+  plugins: [
+    new HtmlPlugin((assets, defaultTemplate, compiler) => {
+      const templateData = {
+        ...assets,
+        title: 'Webpack 2',
+        html: '<div id="content"></div>'
+      }
+      return {'index.html': defaultTemplate(templateData)}
+    })
+  ]
 }
 
 module.exports = merge(webpackConfig(), config)
